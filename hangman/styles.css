@@ -1,0 +1,250 @@
+:root {
+    box-sizing: content-box;
+    --main-font: 'Montserrat', sans-serif;
+    --logo-font: 'Londrina Solid', sans-serif;
+    --color-black: #000000;
+    --color-dark-blue: #03045e;
+    --color-dark-blue2: #023e8a;
+    --color-blue: #0077b6;
+    --color-light-blue: #00b4d8;
+    --color-light-blue2: #caf0f8;
+    --color-red: #d00000;
+    --color-light: #edfafd;
+    --color-white: #ffffff;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-display: swap;
+    src: url("assets/fonts/Montserrat-Medium.woff") format("woff");
+    src: url("assets/fonts/Montserrat-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/Montserrat-Regular.woff") format("woff");
+    src: url("assets/fonts/Montserrat-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Londrina Solid";
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/LondrinaSolid-Regular.woff") format("woff");
+    src: url("assets/fonts/LondrinaSolid-Regular.woff2") format("woff2");
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.page-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: var(--main-font);
+    font-size: 1em;
+    line-height: 120%;
+    color: var(--color-black);
+    background: var(--color-light);
+}
+
+.page-header {
+    background: var(--color-blue);
+    box-shadow: 1px 1px 10px var(--color-dark-blue);
+}
+
+.container {
+    max-width: 1440px;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2em 1em;
+}
+
+.logo {
+    font-family: var(--logo-font);
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 2.4em;
+}
+
+.header__list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header__link {
+    display: block;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-light);
+    transition: all 0.3s;
+}
+
+.header__link:hover,
+.header__link:focus {
+    color: var(--color-dark-blue);
+    text-decoration: underline;
+}
+
+.game {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2em 1em;
+    width: 70%;
+    /* border: 0.15em solid var(--color-blue);
+    border-radius: 1em; */
+}
+
+.game__images {
+    position: relative;
+}
+
+.game__figure {
+    text-align: center;
+}
+
+.game__img {
+    margin-bottom: 1em;
+    border-bottom: 0.5em solid var(--color-black);
+    fill: var(--color-dark-blue);
+}
+
+.game__figure figcaption {
+    font-size: 1.5em;
+    font-style: 500;
+    color: var(--color-dark-blue);
+}
+
+.images__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    position: absolute;
+    top: 10.4em;
+    right: 1.25em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.images__item {
+    margin-top: -0.4em;
+    height: auto;
+}
+
+.images__item--body {
+    display: flex;
+}
+
+.game__controlls {
+    width: 50%;
+    text-align: center;
+}
+
+.word__list {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin: 0;
+    margin-bottom: 3em;
+    padding: 0;
+    list-style: none;
+}
+
+.word__item {
+    height: 2em;
+    width: 2em;
+    border-bottom: 0.15em solid var(--color-dark-blue);
+}
+
+.word__hint {
+    margin-bottom: 2em;
+}
+
+.word__incorrect {
+    margin-bottom: 3em;
+}
+
+.controlls__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em 0.8em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.controlls__button {
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5em;
+    height: 2.5em;
+    border: none;
+    border-radius: 0.6em;
+    font-weight: 500;
+    font-size: 1em;
+    color: var(--color-white);
+    background:  linear-gradient(var(--color-blue), var(--color-dark-blue2)), var(--color-blue);
+    box-shadow: 0 1px rgba(255, 255, 255, 0.2)  inset, 0 3px 5px rgba(0, 1, 6, 0.5), 0 0 1px 1px rgba(0, 1, 6, 0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.controlls__button:hover,
+.controlls__button:focus {
+    background: linear-gradient(var(--color-light-blue), var(--color-blue)), var(--color-light-blue);
+}
+
+.controlls__button:active {
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset, 0 2px 3px rgba(0, 0, 0, 0.5) inset, 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.controlls__button:disabled {
+    color: var(--color-light-blue);
+    background: var(--color-light-blue2);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3) inset, 0 2px 3px rgba(0, 0, 0, 0.3) inset, 0 1px 1px rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+}
