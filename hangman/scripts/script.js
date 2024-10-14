@@ -6,20 +6,21 @@ const array = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
 const body = document.body;
 const header = createElementF(body, 'header', 'page-header');
 const main = createElementF(body, 'main', 'page-main');
-const hangmanParts = [];
+let hangmanParts = [];
 let currentPart = 0;
-const letters = [];
-const keys = [];
+let letters = [];
+let keys = [];
 let position = [];
-const incorrectAttempts = {
+let incorrectAttempts = {
     attempts: 0,
     element: null
 };
 
-const word = words[getRandomNumber(words.length)];
+let word = words[getRandomNumber(words.length)];
 
-createHeaderSection();
+
 createMainSection();
+createHeaderSection();
 
 //creating html elements
 
@@ -42,6 +43,37 @@ function createHeaderSection() {
 
     const logo = createElementF(headerContainer, 'h1', 'logo');
     logo.textContent = 'Hangman';
+
+    const nav = createElementF(headerContainer, 'nav', 'header__nav');
+    const ul = createElementF(nav, 'ul', 'header__list');
+
+    const item1 = createElementF(ul, 'li', 'header__item');
+    const link1 = createElementF(item1, 'a', 'header__link');
+    link1.textContent = 'Start game';
+    link1.href = '';
+
+    link1.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        startGame();
+    });
+
+    const item2 = createElementF(ul, 'li', 'header__item');
+    const link2 = createElementF(item2, 'a', 'header__link');
+    link2.textContent = 'Show solution';
+    link2.href = '';
+
+    link2.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        for (let i = 0; i < letters.length; i++) {
+            console.log(word);
+            letters[i].textContent = word.word[i].toUpperCase();
+            letters[i].classList.add('word__item--shown');
+        }
+        keys.forEach(item => {
+            item.disabled = true;
+        });
+    });
+
 }
 
 function createMainSection() {
@@ -160,9 +192,36 @@ keys.forEach(item => {
 
 //additional functions
 
+function startGame() {
+    hangmanParts = [];
+    currentPart = 0;
+    letters = [];
+    keys = [];
+    position = [];
+    incorrectAttempts = {
+        attempts: 0,
+        element: null
+    };
+    word = words[getRandomNumber(words.length)];
+    main.innerHTML = '';
+    createMainSection();
+}
+
+function stopGame() {
+    const isWin = win();
+    createPopup(body, isWin);
+    keys.forEach(item => {
+        item.disabled = true;
+    });
+}
+
+function win() {
+    return letters.every(item => item.classList.contains('word__item--shown'));
+}
+
 function checkLettters(letter) {
     let position = [];
-    const some = word.word.split('').filter((item, index) => {
+    word.word.split('').filter((item, index) => {
         if (item === letter) {
             console.log(item);
             position.push(index);
@@ -184,18 +243,6 @@ function showParts() {
         currentPart++;
         if (currentPart === 6) stopGame();
     } 
-}
-
-function stopGame() {
-    const isWin = win();
-    createPopup(body, isWin);
-    keys.forEach(item => {
-        item.disabled = true;
-    })
-}
-
-function win() {
-    return letters.every(item => item.classList.contains('word__item--shown'));
 }
 
 function addImgInfo(element, url, alt) {
