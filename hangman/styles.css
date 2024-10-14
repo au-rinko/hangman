@@ -37,6 +37,12 @@
     src: url("assets/fonts/LondrinaSolid-Regular.woff2") format("woff2");
 }
 
+@keyframes showModal {
+    0% {transform: translateX(-50%) translateY(-300%)}
+    80% {transform: translateX(-50%) translateY(0)}
+    100% {transform: translateX(-50%) translateY(-50%)}
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -88,15 +94,12 @@ img {
 }
 
 .logo {
+    margin: 0;
+    font-size: 2.4em;
     font-family: var(--logo-font);
     letter-spacing: 0.2em;
     text-decoration: none;
     color: var(--color-light);
-}
-
-.logo h1 {
-    margin: 0;
-    font-size: 2.4em;
 }
 
 .header__list {
@@ -127,6 +130,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2.5em;
     margin: 0 auto;
     padding: 2em 1em;
     width: 70%;
@@ -172,6 +176,14 @@ img {
     height: auto;
 }
 
+.images__item-img {
+    opacity: 0;
+}
+
+.images__item-img--shown {
+    opacity: 1;
+}
+
 .images__item--body {
     display: flex;
 }
@@ -194,7 +206,14 @@ img {
 .word__item {
     height: 2em;
     width: 2em;
+    font-size: 1.4em;
     border-bottom: 0.15em solid var(--color-dark-blue);
+    transition: all 0.3s;
+}
+
+.word__item--shown {
+    border-bottom: none;
+    font-size: 1.4em;
 }
 
 .word__hint {
@@ -203,6 +222,11 @@ img {
 
 .word__incorrect {
     margin-bottom: 3em;
+}
+
+.word__incorrect span {
+    font-weight: 500;
+    color: var(--color-red);
 }
 
 .controlls__list {
@@ -247,4 +271,64 @@ img {
     background: var(--color-light-blue2);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3) inset, 0 2px 3px rgba(0, 0, 0, 0.3) inset, 0 1px 1px rgba(255, 255, 255, 0.1);
     cursor: not-allowed;
+}
+
+.dark-bg {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.dark-bg--shown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: var(--color-black);
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translateX(-50%) translateY(-50%);
+    box-shadow: 2px 2px 10px var(--color-dark-blue);
+    background: var(--color-light);
+    animation-name: showModal;
+    animation-duration: 1s;
+}
+
+.popup__container {
+    padding: 2em;
+    text-align: center;
+}
+
+.popup__title {
+    margin: 0;
+    margin-bottom: 1em;
+    line-height: 130%;
+}
+
+.popup__button {
+    outline: none;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    border: 2px solid var(--color-dark-blue);
+    border-radius: 0.5em;
+    background: var(--color-light);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.popup__button:hover,
+.popup__button:focus {
+    border: 2px solid var(--color-blue);
+    background: var(--color-light-blue2);
 }
