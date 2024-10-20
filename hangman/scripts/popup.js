@@ -18,7 +18,7 @@ export function createPopup(body, isWinner) {
     if (isWinner) {
         h2.textContent = 'Congratulations! You are the winner!';
     } else {
-        h2.textContent = 'Sorry, you lose..';
+        h2.textContent = 'Sorry, you lose...';
     }
     
     const submitBtn = document.createElement('button');
