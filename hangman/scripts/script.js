@@ -172,22 +172,17 @@ function createKeyboard(parentElement) {
 // keyEvents
 
 keys.forEach(item => {
-    item.addEventListener('click', () => {
-        item.disabled = true;
-        position = checkLettters(item.textContent.toLowerCase());
-        console.log(position);
-        if (position.length !== 0) {
-            for (let i = 0; i < position.length; i++) {
-                letters[position[i]].textContent = item.textContent;
-                letters[position[i]].classList.add('word__item--shown');
-            }
-            const isWin = win();
-            if (isWin) stopGame();
-        } else {
-            addMistake();
-            showParts();
-        }
+    item.addEventListener('click', () => {    
+        findLetter(item);
     });
+});
+
+window.addEventListener("keydown", (evt)=>{
+    if (evt.keyCode > 64 && evt.keyCode < 90) {
+        evt.preventDefault();
+        const pressedKey = keys.filter(item => item.textContent === evt.key.toUpperCase());
+        if (pressedKey.length > 0 && !pressedKey[0].disabled) findLetter(pressedKey[0]);
+    }
 });
 
 //additional functions
@@ -217,6 +212,23 @@ function stopGame() {
 
 function win() {
     return letters.every(item => item.classList.contains('word__item--shown'));
+}
+
+function findLetter(item) {
+    item.disabled = true;
+    position = checkLettters(item.textContent.toLowerCase());
+    console.log(position);
+    if (position.length !== 0) {
+        for (let i = 0; i < position.length; i++) {
+            letters[position[i]].textContent = item.textContent;
+            letters[position[i]].classList.add('word__item--shown');
+        }
+        const isWin = win();
+        if (isWin) stopGame();
+    } else {
+        addMistake();
+        showParts();
+    }
 }
 
 function checkLettters(letter) {
