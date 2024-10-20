@@ -396,3 +396,126 @@ img {
         border-radius: 0.6em;
     }
 }
+
+@media (max-width: 767px) {
+    .header__list {
+        display: none;
+    }
+
+    .container {
+        max-width: 767px;
+    }
+
+    .game {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1.2em;
+        padding: 2em 1em;
+        width: auto;
+        height: 100vh;
+    }
+
+    .game__images {
+        min-width: 200px;
+        position: relative;
+    }
+
+    .game__img {
+        width: 50%;
+    }
+
+    .game__figure figcaption {
+        display: none;
+    }
+
+    .images__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        position: absolute;
+        top: 9.7em;
+        right: 1.25em;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .images__list {
+        top: 5.0em;
+        right: 1.3em;
+    }
+
+    .images__item-img {
+        width: auto;
+        height: 60%;
+    }
+
+    .images__item--head .images__item-img {
+        width: 50%;
+        height: auto;
+    }
+
+    .images__item-img[alt="body"] {
+        width: 3px;
+    }
+
+    .images__item-img[alt~="hand"] {
+        width: 42px;
+    }
+
+    .images__item--body {
+        margin-top: -5px;
+        margin-left: -50px;
+    }
+
+    .images__item--legs {
+        margin-top: -1px;
+        margin-left: 0;
+    }
+
+    .game__controlls {
+        width: 100%;
+        text-align: center;
+    }
+
+    .word__list {
+        margin-bottom: 2em;
+        padding: 0;
+        list-style: none;
+    }
+
+    .word__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1.5em;
+        width: 1.5em;
+        font-size: 1.3em;
+        border-bottom: 0.15em solid var(--color-dark-blue);
+        transition: all 0.3s;
+    }
+
+    .word__item--shown {
+        border-bottom: none;
+        font-size: 1.3em;
+    }
+
+    .word__incorrect {
+        margin-bottom: 2em;
+    }
+
+}
+
+@media (max-width: 380px) {
+    .game__img {
+        width: 175px;
+    }
+
+    .images__list {
+        top: 5.0em;
+        right: -3.5em;
+    }
+}
