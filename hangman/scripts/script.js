@@ -192,23 +192,21 @@ function createKeyboard(parentElement) {
         button.textContent = array[i];
         keys.push(button);
     }
-}
 
-// keyEvents
-
-keys.forEach(item => {
-    item.addEventListener('click', () => {    
-        findLetter(item);
+    keys.forEach(item => {
+        item.addEventListener('click', () => {    
+            findLetter(item);
+        });
     });
-});
-
-window.addEventListener("keydown", (evt)=>{
-    if (evt.keyCode > 64 && evt.keyCode < 90) {
-        evt.preventDefault();
-        const pressedKey = keys.filter(item => item.textContent === evt.key.toUpperCase());
-        if (pressedKey.length > 0 && !pressedKey[0].disabled) findLetter(pressedKey[0]);
-    }
-});
+    
+    window.addEventListener("keydown", (evt)=>{
+        if (evt.keyCode > 64 && evt.keyCode < 90) {
+            evt.preventDefault();
+            const pressedKey = keys.filter(item => item.textContent === evt.key.toUpperCase());
+            if (pressedKey.length > 0 && !pressedKey[0].disabled) findLetter(pressedKey[0]);
+        }
+    });
+}
 
 //additional functions
 
@@ -216,8 +214,8 @@ function startGame() {
     hangmanParts = [];
     currentPart = 0;
     letters = [];
-    keys = [];
     position = [];
+    keys = [];
     incorrectAttempts = {
         attempts: 0,
         element: null
