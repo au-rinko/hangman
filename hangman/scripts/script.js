@@ -172,7 +172,7 @@ function createGameBlock(parentElement) {
 
     if (word.hint.length > 0) {
         const wordHint = createElementF(parentElement, 'p', 'word__hint');
-        wordHint.textContent = `Hint: ${word.hint}`;
+        wordHint.innerHTML = `<strong>Hint:</strong> ${word.hint}`;
     }
 
     const attempts = createElementF(parentElement, 'p', 'word__incorrect');
