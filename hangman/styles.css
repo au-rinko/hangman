@@ -398,8 +398,19 @@ img {
 }
 
 @media (max-width: 767px) {
+
     .header__list {
-        display: none;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .header__link svg {
+        fill: var(--color-light);
+    }
+
+    .header__link:hover svg,
+    .header__link:focus svg {
+        fill: var(--color-dark-blue);
     }
 
     .container {
