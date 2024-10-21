@@ -238,6 +238,7 @@ img {
     justify-content: center;
     gap: 2em 0.8em;
     margin: 0;
+    margin-bottom: 1em;
     padding: 0;
     list-style: none;
 }
@@ -356,8 +357,8 @@ img {
     }
     
     .images__list {
-        top: 7.7em;
-        right: -1.7em;
+        top: 8em;
+        right: -0.5em;
     }
 
     .images__item--head .images__item-img {
@@ -366,16 +367,15 @@ img {
 
     .images__item-img {
         width: auto;
-        height: 75%;
     }
 
     .images__item--body {
-        margin-top: -20px;
+        margin-top: -5px;
         margin-left: -25px;
     }
 
     .images__item--legs {
-        margin-left: 5px;
+        margin-left: -25px;
     }
 
     .game__controlls {
@@ -398,8 +398,19 @@ img {
 }
 
 @media (max-width: 767px) {
+
     .header__list {
-        display: none;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .header__link svg {
+        fill: var(--color-light);
+    }
+
+    .header__link:hover svg,
+    .header__link:focus svg {
+        fill: var(--color-dark-blue);
     }
 
     .container {
@@ -445,13 +456,13 @@ img {
 
     .images__list {
         top: 5.0em;
-        right: 1.3em;
+        right: 2.3em;
     }
 
-    .images__item-img {
+    /* .images__item-img {
         width: auto;
         height: 60%;
-    }
+    } */
 
     .images__item--head .images__item-img {
         width: 50%;
@@ -462,7 +473,8 @@ img {
         width: 3px;
     }
 
-    .images__item-img[alt~="hand"] {
+    .images__item-img[alt~="hand"],
+    .images__item-img[alt~="leg"] {
         width: 42px;
     }
 
@@ -473,7 +485,7 @@ img {
 
     .images__item--legs {
         margin-top: -1px;
-        margin-left: 0;
+        margin-left: -50px;
     }
 
     .game__controlls {
@@ -516,6 +528,6 @@ img {
 
     .images__list {
         top: 5.0em;
-        right: -3.5em;
+        right: -2.5em;
     }
 }
